@@ -1,6 +1,6 @@
 <template>
 <section>
-  <div v-if='showLogin' class='loginPage'>
+  <!-- <div v-if='showLogin' class='loginPage'> -->
   <div  class='firstPage'>
    <el-form :model='loginForm' label-width='80px' class="loginForm">
      <el-form-item label='用户名'>
@@ -17,7 +17,7 @@
      <a href='javascript:;' @click='changeModel(1)' :class='{login:islogin}'>登录</a>
      <a href='javascript:;' @click='changeModel(2)' :class="{register:isregister}">注册</a>
    </div>
-  </div>
+  <!-- </div> -->
 </section>
 </template>
 
@@ -57,7 +57,7 @@ export default {
           }
           else{
             this.showLogin = false
-            this.$router.push({path:'/firstPage'})
+            this.$router.push({path:'/home'})
           }
       })
     },
@@ -76,7 +76,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-    .loginPage{
+    section{
       width: 100%;
       height: 100%;
       margin: 0px;
