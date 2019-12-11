@@ -1,5 +1,7 @@
 <template>
-    <section>hot</section>
+    <section>
+        hot
+    </section>
 </template>
 
 <script>

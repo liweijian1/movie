@@ -6,7 +6,7 @@
             <router-link class='menurouter' @click.native='changeMenu("hot")' :class="{hot:isShowHot}" to='/hot'>最热</router-link>
         </div>
         <keep-alive>
-            <router-view></router-view>
+            <router-view class='viewInFor'></router-view>
         </keep-alive>
     </section>
 </template>
@@ -43,12 +43,15 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
-    .menu-page{
+<style lang="less" scoped>
+ .menu-page{
         width:100%;
         height: 100%;
         background-color: rgb(226, 221, 221);
-        text-align:center;
+        //text-align:center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .menu{
         width:100%;
@@ -66,5 +69,9 @@ export default {
     }
     .firstPage,.recentUpdate,.hot{
         color: blue
+    }
+    .viewInFor{
+        width: 60%;
+        background-color: white
     }
 </style>
