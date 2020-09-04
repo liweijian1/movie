@@ -1,5 +1,7 @@
-const webpack = require('webpack')
-
 module.exports = {
-   lintOnSave:false
-}
+   lintOnSave:false,
+   outputDir:'./dist/biz/movieFront',
+   devServer:{
+      port:8083
+   }
+} 

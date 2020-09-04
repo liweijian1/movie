@@ -11,6 +11,7 @@
      </el-form-item>
    </el-form>
   </div>
+  <input type='file' @change='changeFile'/>
    <el-button v-if='this.showModel' @click="login">登录</el-button>
    <el-button v-else @click="register">注册</el-button>
    <div style='margin-top:20px'>
@@ -98,6 +99,12 @@ export default {
            alert('该账号已存在')
          }
       })
+    },
+    changeFile(e){
+      console.log(e)
+      const [file] = e.target.files
+      if(!file)return
+       
     }
   }
 }

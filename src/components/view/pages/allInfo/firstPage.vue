@@ -12,11 +12,11 @@
                 </div>
              </div>
           </div> 
+        <div class='recentMovie'>
+            <RecentUpdate></RecentUpdate>
+        </div>
         <div class='hotMovie'>
             <HotRecommend></HotRecommend>
-        </div>
-        <div>
-            <RecentUpdate></RecentUpdate>
         </div>
     </div>   
     </section>
@@ -71,7 +71,7 @@ export default {
    }
    .movie-menu{
        width: 40%;
-       outline: 1px solid black;
+       outline:1px solid black;
    }
    .movie-menu-list{
        display: grid;
@@ -80,7 +80,10 @@ export default {
        cursor: pointer;
        text-decoration:none;
    }
+   .recentMovie{
+       width:100%;
+   }
    .hotMovie{
-       
+       width:100%;
    }
 </style>

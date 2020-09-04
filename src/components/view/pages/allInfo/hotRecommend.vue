@@ -1,7 +1,9 @@
 <template>
     <section>
         <p class="hotTitle">最热</p>
-        <div></div>
+        <div>
+
+        </div>
     </section>
 </template>
 

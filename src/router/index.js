@@ -6,7 +6,7 @@ import Home from '../components/view/firstPage'
 Vue.use(VueRouter)
 
 const routes = [
-    {path:'/',component:login},
+    {path:'/movie',component:login},
     {path:'/home',component:Home,redirect:'/movieFirstPage',
      children:[
          {path:'/movieFirstPage',component:()=>import('../components/view/pages/allInfo/firstPage.vue')},
