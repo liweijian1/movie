@@ -13,7 +13,7 @@ export default {
         return{}
     },
     mounted(){
-        this.getRecentMovie()
+        //this.getRecentMovie()
     },
     methods:{
         getRecentMovie(){

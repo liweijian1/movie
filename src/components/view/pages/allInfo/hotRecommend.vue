@@ -15,7 +15,7 @@ export default {
         return{}
     },
     created(){
-        this.getHotMovie()
+        //this.getHotMovie()
     },
     methods:{
         getHotMovie(){

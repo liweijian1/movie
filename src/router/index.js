@@ -6,7 +6,7 @@ import Home from '../components/view/firstPage'
 Vue.use(VueRouter)
 
 const routes = [
-    {path:'/movie',component:login},
+    {path:'/',component:login},
     {path:'/home',component:Home,redirect:'/movieFirstPage',
      children:[
          {path:'/movieFirstPage',component:()=>import('../components/view/pages/allInfo/firstPage.vue')},
@@ -17,6 +17,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
+    mode:'history',//路径类型
+    base:'/movie',//基本地址
     routes
 })
 

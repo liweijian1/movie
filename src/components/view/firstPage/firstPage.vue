@@ -1,17 +1,31 @@
 <template>
     <section class='menu-page'>
-        <div class='menu'>
-            <router-link class='menurouter' @click.native='changeMenu("firstPage")' :class="{firstPage:isShowFirstPage}" to='/movieFirstPage'>首页</router-link>
-            <router-link class='menurouter' @click.native='changeMenu("recentUpdate")' :class="{recentUpdate:isShowRecentUpdate}" to='/rencentUpdate'>最近更新</router-link>
-            <router-link class='menurouter' @click.native='changeMenu("hot")' :class="{hot:isShowHot}" to='/hot'>最热</router-link>
-        </div>
-        <keep-alive>
-            <router-view class='viewInFor'></router-view>
-        </keep-alive>
+        <!-- <div>
+             <div style='display:inline-lock'> -->
+                 <div class='menu'>
+                     <router-link class='menurouter' @click.native='changeMenu("firstPage")' :class="{firstPage:isShowFirstPage}" to='/movieFirstPage'>首页</router-link>
+                     <router-link class='menurouter' @click.native='changeMenu("recentUpdate")' :class="{recentUpdate:isShowRecentUpdate}" to='/rencentUpdate'>最近更新</router-link>
+                     <router-link class='menurouter' @click.native='changeMenu("hot")' :class="{hot:isShowHot}" to='/hot'>最热</router-link>
+                     <el-dropdown class="outBtn" @command='handleCommand'>
+                         <span>欢迎光临:{{userName}}</span>
+                         <el-dropdown-menu slot='dropdown'>
+                             <el-dropdown-item icon="el-icon-place" command='out'>退出登录</el-dropdown-item>
+                         </el-dropdown-menu>
+                     </el-dropdown>
+                     
+                 </div>
+                 <keep-alive>
+                     <router-view class='viewInFor'></router-view>
+                 </keep-alive>
+             <!-- </div>
+        </div> -->
+      
+        
     </section>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     name:'firstPage',
     data(){
@@ -38,7 +52,17 @@ export default {
                 this.isShowRecentUpdate = false
                 this.isShowHot = true
             }
+        },
+        handleCommand(command){
+            if(command==='out'){
+                this.$router.push({path:'/'})
+            }
         }
+    },
+    computed:{
+        ...mapState({
+            userName:state=>state.userName
+        })
     }
 }
 </script>
@@ -73,5 +97,9 @@ export default {
     .viewInFor{
         width: 60%;
         background-color: white
+    }
+    .outBtn{
+        position: absolute;
+        left:90%;
     }
 </style>

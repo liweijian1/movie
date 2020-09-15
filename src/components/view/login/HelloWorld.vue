@@ -11,7 +11,7 @@
      </el-form-item>
    </el-form>
   </div>
-  <input type='file' @change='changeFile'/>
+  <!-- <input type='file' @change='changeFile'/> -->
    <el-button v-if='this.showModel' @click="login">登录</el-button>
    <el-button v-else @click="register">注册</el-button>
    <div style='margin-top:20px'>
@@ -24,6 +24,7 @@
 
 <script>
 import requestMethod from './../../../request/request'
+import {mapMutations} from 'vuex'
 export default {
   name: 'HelloWorld',
   data(){
@@ -65,6 +66,9 @@ export default {
     }
   },
   methods:{
+    ...mapMutations({
+      getUserName:'getUserName'
+    }),
     changeFocus(val){
      
     },
@@ -81,6 +85,22 @@ export default {
         }
     },
     login(){
+      if(this.loginForm.userName===''){
+          this.$message({
+          showClose: true,
+          message: '请输入用户名',
+          type: 'warning'
+        });
+        return
+      }
+      else if(this.loginForm.passWord===''){
+          this.$message({
+            showClose:true,
+            message:'请输入密码',
+            type:'warning'
+          })
+          return
+      }
       requestMethod('login','post',this.loginForm).then(res => {
           if(!res.data.success){
               alert('账号或密码不正确')
@@ -88,20 +108,21 @@ export default {
           else{
             this.showLogin = false
             this.$router.push({path:'/home'})
+            this.getUserName(res.data.data[0].stuname)
           }
       })
     },
     register(){
       requestMethod('register','post',this.loginForm).then(res => {
-         if(res.success){
+         if(res.data.success){
            alert('注册成功')
+           this.changeModel(1)
          }else{
            alert('该账号已存在')
          }
       })
     },
     changeFile(e){
-      console.log(e)
       const [file] = e.target.files
       if(!file)return
        
